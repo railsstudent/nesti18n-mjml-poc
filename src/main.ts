@@ -7,6 +7,7 @@ import helmet from 'helmet'
 import * as express from 'express'
 import * as compression from 'compression'
 import { ConfigService } from '@nestjs/config'
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
@@ -21,6 +22,16 @@ async function bootstrap() {
       whitelist: true,
     }),
   )
+
+  const config = new DocumentBuilder()
+    .setTitle('Nestjs i18n Email example')
+    .setDescription('Nestjs I18n Email API description')
+    .setVersion('1.0')
+    .addTag('i18n email')
+    .build()
+  const document = SwaggerModule.createDocument(app, config)
+  SwaggerModule.setup('api', app, document)
+
   envConfig.ROOT_PATH = path.join(__dirname)
   const port = configService.get<number>('PORT', 0)
   await app.listen(port)

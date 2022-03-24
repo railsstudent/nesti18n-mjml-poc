@@ -8,7 +8,7 @@ import { WelcomeUser } from '../interfaces'
 export class UserService {
   constructor(private mjmlService: MjmlService, private i18nService: I18nService) {}
 
-  sendWelcomeEmail(language: string, dto: WelcomeUserDto): void {
+  sendWelcomeEmail(language: string, dto: WelcomeUserDto): Promise<string> {
     const currencyFormat = new Intl.NumberFormat('en-US', {
       style: 'currency',
       maximumFractionDigits: 0,
@@ -18,7 +18,7 @@ export class UserService {
     const total = this.calculateAnnualFee()
     const formattedTotal = currencyFormat.format(total)
 
-    this.renderWelcomeEmail(language, { ...dto, total: formattedTotal })
+    return this.renderWelcomeEmail(language, { ...dto, total: formattedTotal })
   }
 
   private calculateAnnualFee(): number {
@@ -29,7 +29,7 @@ export class UserService {
     return total * monthsPerYear
   }
 
-  async renderWelcomeEmail(lang: string, welcomeUser: WelcomeUser) {
+  private async renderWelcomeEmail(lang: string, welcomeUser: WelcomeUser) {
     const { organization, name, total } = welcomeUser
     const title = await this.i18nService.translate('email.welcomeUser.TITLE', {
       args: { name },
@@ -54,7 +54,7 @@ export class UserService {
       lang,
     })
 
-    this.mjmlService.renderMjml('welcome-user.mjml', {
+    return this.mjmlService.renderMjml('welcome-user.mjml', {
       title,
       welcomeText,
       membershipFee,

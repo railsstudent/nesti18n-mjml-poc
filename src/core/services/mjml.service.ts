@@ -1,13 +1,13 @@
 import { envConfig } from '@/config/env'
 import { Injectable } from '@nestjs/common'
 import { template } from 'lodash'
-import mjml2html from 'mjml'
+import mjml2html = require('mjml')
 import * as path from 'path'
 import * as fs from 'fs'
 
 @Injectable()
 export class MjmlService {
-  renderMjml(filename: string, vars: Record<string, any>): void {
+  renderMjml(filename: string, vars: Record<string, any>): string {
     const templatePath = path.join(envConfig.ROOT_PATH, 'templates', filename)
     const emailContent = fs.readFileSync(templatePath).toString()
     console.log('templatePath', templatePath, 'emailContent', emailContent, 'vars', vars)
@@ -17,10 +17,9 @@ export class MjmlService {
     console.log('translated', translated)
 
     const htmlOutput = mjml2html(translated, {
-      beautify: true,
       minify: false,
     })
 
-    console.log(htmlOutput)
+    return htmlOutput.html
   }
 }

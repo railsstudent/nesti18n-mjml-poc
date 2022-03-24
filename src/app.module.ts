@@ -3,6 +3,7 @@ import { HeaderResolver, I18nJsonParser, I18nModule } from 'nestjs-i18n'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { CoreModule } from './core'
+import { UserModule } from './user'
 import * as path from 'path'
 
 @Module({
@@ -17,6 +18,7 @@ import * as path from 'path'
       },
       resolvers: [new HeaderResolver(['language'])],
     }),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

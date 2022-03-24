@@ -1,6 +1,6 @@
 {
   "version": "0.2",
   "language": "en",
-  "words": ["nestjs", "mjml"],
+  "words": ["nestjs", "mjml", "dtos"],
   "flagWords": ["hte"]
 }

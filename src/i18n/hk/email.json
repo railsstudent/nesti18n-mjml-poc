@@ -1,6 +1,10 @@
 {
-  "GOOD_MORNING": "早晨",
-  "THANKS_AND_BEST_REGARDS": "謝謝和最好的問候",
-  "WELCOME": "歡迎來到{0.organization}",
-  "MEMBERSHIP_FEE": "會員費{0.total}港幣。"
+  "WELCOME": {
+    "GOOD_MORNING": "早晨",
+    "THANKS_AND_BEST_REGARDS": "謝謝,",
+    "WELCOME": "歡迎來到{0.organization}",
+    "MEMBERSHIP_FEE": "會員費{0.total}港幣和開始於{0.startDate}。",
+    "TITLE": "親愛的{0.name},",
+    "ADMIN": "管理員"
+  }
 }

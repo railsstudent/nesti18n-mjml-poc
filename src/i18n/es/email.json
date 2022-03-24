@@ -1,6 +1,10 @@
 {
-  "GOOD_MORNING": "Buenos dias",
-  "THANKS_AND_BEST_REGARDS": "Gracias y un saludo",
-  "WELCOME": "Bienvenido a {0.organization}",
-  "MEMBERSHIP_FEE": "La cuota de membresía es {0.total} dolares."
+  "WELCOME": {
+    "GOOD_MORNING": "Buenos dias",
+    "THANKS_AND_BEST_REGARDS": "Gracias y un saludo,",
+    "WELCOME": "Bienvenido a {0.organization}",
+    "MEMBERSHIP_FEE": "La cuota de membresía es {0.total} dolares y comienza en ${0.startDate}.",
+    "TITLE": "Quierdo {0.name},",
+    "ADMIN": "Admin"
+  }
 }

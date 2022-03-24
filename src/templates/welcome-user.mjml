@@ -1,0 +1,25 @@
+<mjml>
+  <mj-head>
+  </mj-head>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-text font-size="30px"><%= title %></mj-text>
+      </mj-column>
+      <mj-column>
+        <mj-text><%= welcomeText %></mj-text>
+      </mj-column>
+      <mj-column>
+        <mj-text><%= membershipFee %></mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-text><%= thankYouText %></mj-text>
+      </mj-column>
+      <mj-column>
+        <mj-text><%= organization %> <%= admin %></mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

@@ -32,7 +32,7 @@ export class UserService {
   }
 
   private async renderWelcomeEmail(lang: string, welcomeUser: WelcomeUser) {
-    const { organization, name, total } = welcomeUser
+    const { organization, name, total, email } = welcomeUser
     const title = await this.i18nService.translate('email.welcomeUser.TITLE', {
       args: { name },
       lang,
@@ -68,6 +68,7 @@ export class UserService {
     const subject = await this.i18nService.translate('email.welcomeUser.SUBJECT', { lang })
 
     await this.mailerService.send({
+      to: email,
       subject,
       html,
     })

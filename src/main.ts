@@ -6,9 +6,11 @@ import { ValidationPipe } from '@nestjs/common'
 import helmet from 'helmet'
 import * as express from 'express'
 import * as compression from 'compression'
+import { ConfigService } from '@nestjs/config'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
+  const configService = app.get(ConfigService)
   app.enableCors()
   app.use(helmet())
   app.use(compression())
@@ -20,6 +22,7 @@ async function bootstrap() {
     }),
   )
   envConfig.ROOT_PATH = path.join(__dirname)
-  await app.listen(3000)
+  const port = configService.get<number>('PORT', 0)
+  await app.listen(port)
 }
 bootstrap()

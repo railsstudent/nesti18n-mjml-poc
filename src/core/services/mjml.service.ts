@@ -1,3 +1,4 @@
+import { ConfigService } from '@nestjs/config'
 import { envConfig } from '@/config/env'
 import { Injectable } from '@nestjs/common'
 import { template } from 'lodash'
@@ -7,6 +8,8 @@ import * as fs from 'fs'
 
 @Injectable()
 export class MjmlService {
+  constructor(private configService: ConfigService) {}
+
   renderMjml(filename: string, vars: Record<string, any>): string {
     const templatePath = path.join(envConfig.ROOT_PATH, 'templates', filename)
     const emailContent = fs.readFileSync(templatePath).toString()
@@ -14,10 +17,9 @@ export class MjmlService {
     const translated = compiled(vars)
 
     const htmlOutput = mjml2html(translated, {
-      minify: false,
+      minify: this.configService.get<string>('NODE_ENV', '') === 'production',
     })
 
-    console.log('html', htmlOutput.html)
     return htmlOutput.html
   }
 }

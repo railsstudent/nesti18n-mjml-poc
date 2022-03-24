@@ -1,5 +1,4 @@
-export interface WelcomeUser {
-  organization: string
-  name: string
+import { WelcomeUserDto } from '../dtos'
+export interface WelcomeUser extends WelcomeUserDto {
   total: string
 }

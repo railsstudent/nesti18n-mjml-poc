@@ -1,4 +1,4 @@
-import { MjmlService } from '@/core'
+import { MailerService, MjmlService } from '@/core'
 import { Injectable } from '@nestjs/common'
 import { I18nService } from 'nestjs-i18n'
 import { WelcomeUserDto } from '../dtos'
@@ -6,14 +6,16 @@ import { WelcomeUser } from '../interfaces'
 
 @Injectable()
 export class UserService {
-  constructor(private mjmlService: MjmlService, private i18nService: I18nService) {}
+  constructor(
+    private mjmlService: MjmlService,
+    private i18nService: I18nService,
+    private mailerService: MailerService,
+  ) {}
 
-  sendWelcomeEmail(language: string, dto: WelcomeUserDto): Promise<string> {
+  sendWelcomeEmail(language: string, dto: WelcomeUserDto): Promise<void> {
     const currencyFormat = new Intl.NumberFormat('en-US', {
-      style: 'currency',
       maximumFractionDigits: 0,
       minimumFractionDigits: 0,
-      currency: 'USD',
     })
     const total = this.calculateAnnualFee()
     const formattedTotal = currencyFormat.format(total)
@@ -54,13 +56,20 @@ export class UserService {
       lang,
     })
 
-    return this.mjmlService.renderMjml('welcome-user.mjml', {
+    const html = this.mjmlService.renderMjml('welcome-user.mjml', {
       title,
       welcomeText,
       membershipFee,
       thankYouText,
       organization,
       admin,
+    })
+
+    const subject = await this.i18nService.translate('email.welcomeUser.SUBJECT', { lang })
+
+    await this.mailerService.send({
+      subject,
+      html,
     })
   }
 }

@@ -1,10 +1,11 @@
 {
-  "WELCOME": {
+  "welcomeUser": {
     "GOOD_MORNING": "早晨",
     "THANKS_AND_BEST_REGARDS": "謝謝,",
-    "WELCOME": "歡迎來到{0.organization}",
+    "WELCOME": "歡迎來到{0.organization}。",
     "MEMBERSHIP_FEE": "會員費{0.total}港幣和開始於{0.startDate}。",
     "TITLE": "親愛的{0.name},",
-    "ADMIN": "管理員"
+    "ADMIN": "管理員",
+    "SUBJECT": "註冊完成"
   }
 }

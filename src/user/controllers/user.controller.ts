@@ -8,7 +8,7 @@ export class UserController {
   constructor(private userService: UserService) {}
 
   @Post('welcome-user')
-  sendWelcomeEmail(@I18nLang() language, @Body() dto: WelcomeUserDto): Promise<string> {
+  sendWelcomeEmail(@I18nLang() language, @Body() dto: WelcomeUserDto): Promise<void> {
     return this.userService.sendWelcomeEmail(language, dto)
   }
 }

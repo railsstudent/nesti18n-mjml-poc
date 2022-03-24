@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common'
-import { MjmlService } from './services'
+import { MailerService, MjmlService } from './services'
 
 @Module({
-  providers: [MjmlService],
-  exports: [MjmlService],
+  providers: [MjmlService, MailerService],
+  exports: [MjmlService, MailerService],
 })
 export class CoreModule {}

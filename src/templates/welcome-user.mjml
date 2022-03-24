@@ -3,21 +3,21 @@
   </mj-head>
   <mj-body>
     <mj-section>
-      <mj-column>
+      <mj-column width="600px">
         <mj-text font-size="30px"><%= title %></mj-text>
       </mj-column>
-      <mj-column>
+      <mj-column width="600px">
         <mj-text><%= welcomeText %></mj-text>
       </mj-column>
-      <mj-column>
+      <mj-column width="600px">
         <mj-text><%= membershipFee %></mj-text>
       </mj-column>
     </mj-section>
     <mj-section>
-      <mj-column>
+      <mj-column width="600px">
         <mj-text><%= thankYouText %></mj-text>
       </mj-column>
-      <mj-column>
+      <mj-column width="600px">
         <mj-text><%= organization %> <%= admin %></mj-text>
       </mj-column>
     </mj-section>

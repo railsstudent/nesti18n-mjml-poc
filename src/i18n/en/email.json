@@ -2,9 +2,10 @@
   "welcomeUser": {
     "GOOD_MORNING": "Good Morning",
     "THANKS_AND_BEST_REGARDS": "Thanks and best regards,",
-    "WELCOME": "Welcome to {0.organization}",
-    "MEMBERSHIP_FEE": "Membership fee is {0.total} dollars and start at ${0.startDate}.",
+    "WELCOME": "Welcome to {0.organization}.",
+    "MEMBERSHIP_FEE": "Membership fee is {0.total} dollars and starts at {0.startDate}.",
     "TITLE": "Dear {0.name},",
-    "ADMIN": "Admin"
+    "ADMIN": "Administrator",
+    "SUBJECT": "Registration completed"
   }
 }

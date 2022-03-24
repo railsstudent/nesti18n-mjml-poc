@@ -1,0 +1,6 @@
+{
+  "GOOD_MORNING": "Buenos dias",
+  "THANKS_AND_BEST_REGARDS": "Gracias y un saludo",
+  "WELCOME": "Bienvenido a {0.organization}",
+  "MEMBERSHIP_FEE": "La cuota de membresía es {0.total} dolares."
+}

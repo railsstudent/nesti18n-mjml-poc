@@ -85,7 +85,8 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix"
+  "volta": {
+    "node": "16.14.2",
+    "npm": "8.5.5"
   }
 }

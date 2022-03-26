@@ -1,16 +1,16 @@
-import { AppModule } from './app.module'
-import { envConfig } from './config/env'
 import { ValidationPipe } from '@nestjs/common'
-import { ConfigService } from '@nestjs/config'
 import { NestFactory } from '@nestjs/core'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import * as compression from 'compression'
 import * as express from 'express'
 import helmet from 'helmet'
+import { AppModule } from './app.module'
+import { envConfig } from './config/env'
+import { CustomConfigService } from './core'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
-  const configService = app.get(ConfigService)
+  const configService = app.get(CustomConfigService)
   app.enableCors()
   app.use(helmet())
   app.use(compression())
@@ -32,7 +32,6 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document)
 
   envConfig.ROOT_PATH = __dirname
-  const port = configService.get<number>('PORT', 0)
-  await app.listen(port)
+  await app.listen(configService.port)
 }
 bootstrap()

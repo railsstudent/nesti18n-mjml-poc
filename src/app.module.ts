@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
-import * as Joi from 'joi'
 import { HeaderResolver, I18nJsonParser, I18nModule } from 'nestjs-i18n'
 import * as path from 'path'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { CoreModule } from './core'
 import { UserModule } from './user'
+import { validationSchema } from './envSchema'
 
 @Module({
   imports: [
@@ -22,15 +22,7 @@ import { UserModule } from './user'
     }),
     ConfigModule.forRoot({
       isGlobal: true,
-      validationSchema: Joi.object({
-        NODE_ENV: Joi.string().valid('development', 'production', 'test').default('development'),
-        PORT: Joi.number().default(3000),
-        MAILER_FROM: Joi.string().required(),
-        SMTP_HOST: Joi.string().required(),
-        SMTP_PORT: Joi.number().required(),
-        SMTP_USER: Joi.string().required(),
-        SMTP_PASSWORD: Joi.string().required(),
-      }),
+      validationSchema,
     }),
     UserModule,
   ],

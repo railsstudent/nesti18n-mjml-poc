@@ -30,6 +30,12 @@ module.exports = {
     'import/first': 'error',
     'import/newline-after-import': 'error',
     'import/no-duplicates': 'error',
+    'import/order': [
+      1,
+      {
+        groups: ['external', 'builtin', 'internal', 'sibling', 'parent', 'index'],
+      },
+    ],
     '@typescript-eslint/naming-convention': [
       'error',
       {

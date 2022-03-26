@@ -2,14 +2,14 @@ import previewEmail = require('preview-email')
 import Mail = require('nodemailer/lib/mailer')
 import nodemailer = require('nodemailer')
 import { Injectable } from '@nestjs/common'
-import { CustomConfigService } from './app-config.service'
+import { AppConfigService } from './app-config.service'
 
 @Injectable()
 export class MailerService {
   private readonly mailerFrom: string
   private readonly transport: nodemailer.Transporter
 
-  constructor(private configService: CustomConfigService) {
+  constructor(private configService: AppConfigService) {
     this.mailerFrom = this.configService.mailerFrom
     this.transport = nodemailer.createTransport({
       host: this.configService.smtpHost,

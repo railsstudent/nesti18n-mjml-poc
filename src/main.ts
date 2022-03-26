@@ -6,11 +6,11 @@ import * as express from 'express'
 import helmet from 'helmet'
 import { AppModule } from './app.module'
 import { envConfig } from './config/env'
-import { CustomConfigService } from './core'
+import { AppConfigService } from './core'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
-  const configService = app.get(CustomConfigService)
+  const configService = app.get(AppConfigService)
   app.enableCors()
   app.use(helmet())
   app.use(compression())

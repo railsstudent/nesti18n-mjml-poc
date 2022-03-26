@@ -1,5 +1,5 @@
-import { CoreModule } from '@/core'
 import { Module } from '@nestjs/common'
+import { CoreModule } from '@/core'
 import { UserController } from './controllers'
 import { UserService } from './services'
 

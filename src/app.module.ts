@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common'
+import { ConfigModule } from '@nestjs/config'
+import * as Joi from 'joi'
 import { HeaderResolver, I18nJsonParser, I18nModule } from 'nestjs-i18n'
+import * as path from 'path'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { CoreModule } from './core'
 import { UserModule } from './user'
-import * as path from 'path'
-import { ConfigModule } from '@nestjs/config'
-import * as Joi from 'joi'
 
 @Module({
   imports: [

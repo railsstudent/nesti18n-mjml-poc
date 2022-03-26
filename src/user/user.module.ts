@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common'
-import { UserService } from './services'
-import { UserController } from './controllers'
 import { CoreModule } from '@/core'
+import { Module } from '@nestjs/common'
+import { UserController } from './controllers'
+import { UserService } from './services'
 
 @Module({
   imports: [CoreModule],

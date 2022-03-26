@@ -1,13 +1,12 @@
+import { ValidationPipe } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
 import { NestFactory } from '@nestjs/core'
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
+import * as compression from 'compression'
+import * as express from 'express'
+import helmet from 'helmet'
 import { AppModule } from './app.module'
 import { envConfig } from './config/env'
-import * as path from 'path'
-import { ValidationPipe } from '@nestjs/common'
-import helmet from 'helmet'
-import * as express from 'express'
-import * as compression from 'compression'
-import { ConfigService } from '@nestjs/config'
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
@@ -32,7 +31,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config)
   SwaggerModule.setup('api', app, document)
 
-  envConfig.ROOT_PATH = path.join(__dirname)
+  envConfig.ROOT_PATH = __dirname
   const port = configService.get<number>('PORT', 0)
   await app.listen(port)
 }

@@ -1,10 +1,10 @@
-import { ConfigService } from '@nestjs/config'
 import { envConfig } from '@/config/env'
 import { Injectable } from '@nestjs/common'
-import { template } from 'lodash'
-import mjml2html = require('mjml')
-import * as path from 'path'
+import { ConfigService } from '@nestjs/config'
 import * as fs from 'fs'
+import { template } from 'lodash'
+import * as path from 'path'
+import mjml2html = require('mjml')
 
 @Injectable()
 export class MjmlService {

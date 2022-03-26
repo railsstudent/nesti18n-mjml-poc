@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common'
-import { ConfigService } from '@nestjs/config'
 import previewEmail = require('preview-email')
 import Mail = require('nodemailer/lib/mailer')
 import nodemailer = require('nodemailer')
+import { Injectable } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
 
 @Injectable()
 export class MailerService {

@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common'
 import { I18nService } from 'nestjs-i18n'
+import * as path from 'path'
 import { MailerService, MjmlService } from '@/core'
+import { envConfig } from '@/config'
 import { WelcomeUserDto } from '../dtos'
 import { WelcomeUser } from '../interfaces'
 
@@ -45,7 +47,8 @@ export class UserService {
     const admin = await this.translate('email.welcomeUser.ADMIN', {}, lang)
     const subject = await this.translate('email.welcomeUser.SUBJECT', {}, lang)
 
-    const html = this.mjmlService.renderMjml('welcome-user.mjml', {
+    const emailPath = path.join(envConfig.ROOT_PATH, 'src', 'user', 'templates', 'welcome-user.mjml')
+    const html = this.mjmlService.renderMjml(emailPath, {
       title,
       welcomeText,
       membershipFee,

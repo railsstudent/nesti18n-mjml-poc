@@ -1,23 +1,26 @@
 <mjml>
   <mj-head>
+    <mj-attributes>
+      <mj-class name="mjclass" width="600px" />
+    </mj-attributes>
   </mj-head>
   <mj-body>
     <mj-section>
-      <mj-column width="600px">
+      <mj-column mj-class="mjclass">
         <mj-text font-size="30px"><%= title %></mj-text>
       </mj-column>
-      <mj-column width="600px">
+      <mj-column mj-class="mjclass">
         <mj-text><%= welcomeText %></mj-text>
       </mj-column>
-      <mj-column width="600px">
+      <mj-column mj-class="mjclass">
         <mj-text><%= membershipFee %></mj-text>
       </mj-column>
     </mj-section>
     <mj-section>
-      <mj-column width="600px">
+      <mj-column mj-class="mjclass">
         <mj-text><%= thankYouText %></mj-text>
       </mj-column>
-      <mj-column width="600px">
+      <mj-column mj-class="mjclass">
         <mj-text><%= organization %> <%= admin %></mj-text>
       </mj-column>
     </mj-section>

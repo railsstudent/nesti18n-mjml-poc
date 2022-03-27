@@ -19,7 +19,6 @@ export class MjmlService {
       keepComments: !isProduction,
     })
 
-    console.log(htmlOutput.html)
     return htmlOutput.html
   }
 }

@@ -3,7 +3,7 @@ import { I18nService } from 'nestjs-i18n'
 import * as path from 'path'
 import { MailerService, MjmlService } from '@/core'
 import { envConfig } from '@/config'
-import { WelcomeUserDto } from '../dtos'
+import { PasswordUpdatedDto, WelcomeUserDto } from '../dtos'
 import { WelcomeUser } from '../interfaces'
 
 @Injectable()
@@ -72,5 +72,31 @@ export class UserService {
       })
     }
     return this.i18nService.translate(key, { lang })
+  }
+
+  sendPasswordUpdatedEmail(language: string, dto: PasswordUpdatedDto): Promise<void> {
+    return this.renderPasswordUpdatedEmail(language, dto)
+  }
+
+  private async renderPasswordUpdatedEmail(lang: string, dto: PasswordUpdatedDto) {
+    const { email } = dto
+
+    const title = await this.translate('email.passwordUpdated.TITLE', {}, lang)
+    const message = await this.translate('email.passwordUpdated.MESSAGE', {}, lang)
+    const subject = await this.translate('email.passwordUpdated.SUBJECT', {}, lang)
+    const admin = await this.translate('email.passwordUpdated.ADMIN', {}, lang)
+
+    const emailPath = path.join(envConfig.ROOT_PATH, 'src', 'user', 'templates', 'password-updated.mjml')
+    const html = this.mjmlService.renderMjml(emailPath, {
+      title,
+      message,
+      admin,
+    })
+
+    await this.mailerService.send({
+      to: email,
+      subject,
+      html,
+    })
   }
 }

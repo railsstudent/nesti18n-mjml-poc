@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common'
 import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger'
 import { I18nLang } from 'nestjs-i18n'
-import { WelcomeUserDto } from '../dtos'
+import { PasswordUpdatedDto, WelcomeUserDto } from '../dtos'
 import { UserService } from '../services'
 
 @ApiTags('User')
@@ -19,5 +19,17 @@ export class UserController {
   @Post('welcome-user')
   sendWelcomeEmail(@I18nLang() language, @Body() dto: WelcomeUserDto): Promise<void> {
     return this.userService.sendWelcomeEmail(language, dto)
+  }
+
+  @ApiOperation({
+    description: 'Send password updated email',
+  })
+  @ApiBody({
+    type: PasswordUpdatedDto,
+    description: 'Return an instance of PasswordUpdatedDto',
+  })
+  @Post('password-updated')
+  sendPasswordUpdatedEmail(@I18nLang() language, @Body() dto: PasswordUpdatedDto): Promise<void> {
+    return this.userService.sendPasswordUpdatedEmail(language, dto)
   }
 }

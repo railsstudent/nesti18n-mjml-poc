@@ -32,6 +32,19 @@
 $ npm install
 ```
 
+## Running Docker
+
+```bash
+# development
+$ docker-compose up -d
+```
+
+## Open Mailtrap
+
+```
+http://localhost:8025
+```
+
 ## Running the app
 
 ```bash

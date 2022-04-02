@@ -47,7 +47,7 @@ export class UserService {
     const admin = await this.translate('email.welcomeUser.ADMIN', {}, lang)
     const subject = await this.translate('email.welcomeUser.SUBJECT', {}, lang)
 
-    const emailPath = path.join(envConfig.ROOT_PATH, 'src', 'user', 'templates', 'welcome-user.mjml')
+    const emailPath = path.join(envConfig.ROOT_PATH, 'user', 'templates', 'welcome-user.mjml')
     const html = this.mjmlService.renderMjml(emailPath, {
       title,
       welcomeText,
@@ -86,7 +86,7 @@ export class UserService {
     const subject = await this.translate('email.passwordUpdated.SUBJECT', {}, lang)
     const admin = await this.translate('email.passwordUpdated.ADMIN', {}, lang)
 
-    const emailPath = path.join(envConfig.ROOT_PATH, 'src', 'user', 'templates', 'password-updated.mjml')
+    const emailPath = path.join(envConfig.ROOT_PATH, 'user', 'templates', 'password-updated.mjml')
     const html = this.mjmlService.renderMjml(emailPath, {
       title,
       message,

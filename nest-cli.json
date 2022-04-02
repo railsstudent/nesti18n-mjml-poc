@@ -4,6 +4,10 @@
   "compilerOptions": {
     "assets": [
       {
+        "include": "**/*.mjml",
+        "watchAssets": true
+      },
+      {
         "include": "i18n/**/*",
         "watchAssets": true
       }

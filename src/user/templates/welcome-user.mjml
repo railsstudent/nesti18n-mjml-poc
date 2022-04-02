@@ -10,10 +10,10 @@
         <mj-text font-size="30px"><%= title %></mj-text>
       </mj-column>
       <mj-column mj-class="mjclass">
-        <mj-text><%= welcomeText %></mj-text>
+        <mj-text font-size="20px"><%= welcomeText %></mj-text>
       </mj-column>
       <mj-column mj-class="mjclass">
-        <mj-text><%= membershipFee %></mj-text>
+        <mj-text font-size="20px"><%= membershipFee %></mj-text>
       </mj-column>
     </mj-section>
     <mj-section>

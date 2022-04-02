@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  mail:
+    container_name: sys_mail
+    restart: unless-stopped
+    image: eaudeweb/mailtrap:latest
+    ports:
+      - "127.0.0.1:8025:80"
+      - "127.0.0.1:2525:25"
